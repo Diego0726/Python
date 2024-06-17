@@ -1,4 +1,5 @@
 import customtkinter as ctk
+from tkinter import *
 
 ############## CONFIGURAÇÃO DA JANELA ###############
 janela_inicio = ctk.CTk()
@@ -19,7 +20,7 @@ def limpar_entrada():
 
 # Função auxiliar para criar o comando correto
 def comando_limpar(text):
-    return lambda: add_numero_precionado(text) if text != 'C' else limpar_entrada()
+    return lambda: add_numero_precionado(text) if text != 'Apagar' else limpar_entrada()
 
 # Função para abrir a nova janela
 def open_janela_function():
@@ -32,12 +33,9 @@ def open_janela_function():
 
     ############## COMPONENTES (LAYOUT) #################
 
-    imagem = ctk.CTkImage(file='images\Lampada.png')
-    label = ctk.CTkImage(master=open_janela_function,height=5,width=5, image=imagem)
     
-    
-    label.pack(padx=5,pady=5)
 
+    
 
     # Lampada
     botao1 = ctk.CTkButton(master=janela_function, text='Ligar', text_color='#cac0d1', width=150, height=50, fg_color='#17268f',
@@ -63,7 +61,7 @@ def open_janela_function():
     botao6.place(x=250,y=400)
 
 # Cria uma entrada para mostrar os números pressionados
-entry = ctk.CTkEntry(janela_inicio, width=300, height=50,show='*', justify='center',font=('Arial', 25))
+entry = ctk.CTkEntry(janela_inicio, width=450, height=50,show='*', justify='center',font=('Arial', 25))
 entry.grid(row=0, column=0, columnspan=3, pady=10, padx=79)
 
 # Define os botões numerados de 0 a 9 e o botão de limpar
@@ -78,26 +76,27 @@ teclado = [
     {'text': '8', 'row': 3, 'column': 1},
     {'text': '9', 'row': 3, 'column': 2},
     {'text': '0', 'row': 4, 'column': 1},
-    {'text': 'C', 'row': 4, 'column': 0}
+    {'text': 'Apagar', 'row': 4, 'column': 0}
 ]
 
 # Cria os botões e adiciona-os à grade
 for btn_info in teclado:
-    btn = ctk.CTkButton(janela_inicio, text=btn_info['text'],width=10,height=10,fg_color='#17268f',
+    btn = ctk.CTkButton(janela_inicio, text=btn_info['text'],width=50,height=50,fg_color='#17268f',
                         hover_color='#806f7e',text_color='#cac0d1', command=comando_limpar(btn_info['text']))
-    btn.grid(row=btn_info['row'], column=btn_info['column'],padx=1, pady=1, sticky='nsew')
+    
+    btn.grid(row=btn_info['row'], column=btn_info['column'],padx=5, pady=5, sticky='nsew')
 
  
 
 # Ajusta a configuração da grade para expandir os botões uniformemente
-for i in range(8):
+for i in range(9):
     janela_inicio.grid_rowconfigure(i, weight=1)
 for i in range(6):
     janela_inicio.grid_columnconfigure(i, weight=1)
 
 # Botão de Acessar
-Acessar = ctk.CTkButton(janela_inicio, text='Acessar', text_color='#cac0d1', width=150, height=50, fg_color='#17268f',
-                        hover_color='#806f7e', command=open_janela_function)
-Acessar.place(x=155, y=400)
+Acessar = ctk.CTkButton(janela_inicio, text='Acessar', text_color='#cac0d1', width=180, height=60, fg_color='#17268f',
+                        hover_color='#DB0006', command=open_janela_function)
+Acessar.place(x=135, y=420)
 
 janela_inicio.mainloop()
