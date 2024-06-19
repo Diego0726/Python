@@ -1,10 +1,15 @@
+# ALUNO: DIEGO OLIVEIRA BARRETO
+# Escute essa musica enquanto avalia o projeto por favor https://youtu.be/L_jWHffIx5E?si=HuTemvz0n_k9pvnV
+
+
+
 import customtkinter as ctk
 from tkinter import *
 import serial
 
 
 try:
-    arduino = serial.Serial('COM3', 9600)#'
+    arduino = serial.Serial('COM3', 9600)
 except serial.SerialException as e:
     print(f"Erro ao Conectar com o Arduino: {e}")
 
@@ -75,7 +80,7 @@ def open_janela_function():
         fechadura_label.configure(text='Estado da Fechadura: Aberta')
 
     def Texto_fechadura_fechar():
-        botao6.configure(text="Fechada")
+        botao6.configure(text="Fechar")
         fechadura_label.configure(text='Estado da Fechadura: Fechada')
 
     
